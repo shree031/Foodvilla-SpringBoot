@@ -41,6 +41,7 @@ public class SecurityConfig {
         methods.add("PUT");
         methods.add("POST");
         methods.add("DELETE");
+        methods.add("OPTIONS");
 
         configuration.setAllowedMethods(methods);
 //        configuration.addAllowedMethod("*");

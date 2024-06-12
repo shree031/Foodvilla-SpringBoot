@@ -1,7 +1,11 @@
 package com.sample.foodvilla.entity;
 
 
+import com.sample.foodvilla.model.ProductStatus;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,6 +26,9 @@ public class Product {
     private int rating;
 
     private String type;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private ProductStatus status;
 
     // Default constructor
     public Product() {
@@ -96,5 +103,13 @@ public class Product {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public ProductStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProductStatus status) {
+        this.status = status;
     }
 }

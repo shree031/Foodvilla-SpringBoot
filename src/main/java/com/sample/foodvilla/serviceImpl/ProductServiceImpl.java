@@ -3,10 +3,13 @@ package com.sample.foodvilla.serviceImpl;
 import com.sample.foodvilla.entity.Product;
 import com.sample.foodvilla.entity.ProductDistributor;
 import com.sample.foodvilla.entity.User;
+import com.sample.foodvilla.model.ProductStatus;
 import com.sample.foodvilla.repository.ProductDistributorRepository;
 import com.sample.foodvilla.repository.ProductRepository;
 import com.sample.foodvilla.repository.UserRepository;
 import com.sample.foodvilla.service.ProductService;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +63,37 @@ public class ProductServiceImpl implements ProductService {
         });
         return products;
     }
+
+    @Transactional
+    public void deleteProduct(Long productId) {
+        // Delete the related entries in product_distributor first
+        productDistributorRepository.deleteByProductId(productId);
+
+        // Then set the status to DELETED
+        updateProductStatus(productId, ProductStatus.DELETED);
+    }
+
+    @Transactional
+    public void markProductAsOutOfStock(Long productId) {
+        updateProductStatus(productId, ProductStatus.OUT_OF_STOCK);
+    }
+
+    @Transactional
+    public void markProductAsAvailable(Long productId) {
+        updateProductStatus(productId, null);
+    }
+
+    private void updateProductStatus(Long productId, ProductStatus status) {
+        Optional<Product> productOptional = productRepository.findById(productId);
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            product.setStatus(status);
+            productRepository.save(product);
+        } else {
+            throw new EntityNotFoundException("Product not found with id: " + productId);
+        }
+    }
+
+
 }
 

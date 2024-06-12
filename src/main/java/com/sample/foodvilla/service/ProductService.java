@@ -17,4 +17,10 @@ public interface ProductService {
     Product updateProduct(Product product);
 
     List<Product> getProductsByDistributorId(Long id);
+
+    void deleteProduct(Long id);
+
+    void markProductAsOutOfStock(Long id);
+
+    void markProductAsAvailable(Long id);
 }
