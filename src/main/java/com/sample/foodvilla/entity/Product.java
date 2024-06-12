@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "products")
+@Table(name = "products")
 public class Product {
 
     @Id
@@ -21,17 +21,20 @@ public class Product {
     private double price;
     private int rating;
 
+    private String type;
+
     // Default constructor
     public Product() {
     }
 
     // Constructor with parameters
-    public Product(String name, String imageUrl, String description, double price, int rating) {
+    public Product(String name, String imageUrl, String description, double price, int rating, String type) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.description = description;
         this.price = price;
         this.rating = rating;
+        this.type = type;
     }
 
     public Product(Long productId) {
@@ -85,5 +88,13 @@ public class Product {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

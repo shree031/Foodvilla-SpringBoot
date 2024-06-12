@@ -1,6 +1,7 @@
 package com.sample.foodvilla.restController;
 
 import com.sample.foodvilla.entity.Product;
+import com.sample.foodvilla.entity.ProductDistributor;
 import com.sample.foodvilla.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,12 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    @GetMapping("/distributor/{id}")
+    public ResponseEntity<List<Product>> getDistributorProduct(@PathVariable Long id) {
+        List<Product> products = productService.getProductsByDistributorId(id);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
     // Get single product by ID
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
@@ -42,9 +49,9 @@ public class ProductController {
     }
 
     // Add a new product
-    @PostMapping
-    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-        Product savedProduct = productService.addProduct(product);
+    @PostMapping("/{id}")
+    public ResponseEntity<ProductDistributor> addProduct(@PathVariable Long id, @RequestBody Product product) {
+        ProductDistributor savedProduct = productService.addProduct(product, id);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 

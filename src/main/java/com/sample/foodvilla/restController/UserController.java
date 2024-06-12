@@ -22,9 +22,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<User> login(@RequestBody User userLoginRequest) {
-        System.out.println("login method called ");
         // Validate user credentials
-        System.out.println(userLoginRequest.toString());
         User user = userService.authenticateUser(userLoginRequest.getUsername(), userLoginRequest.getPassword(), userLoginRequest.getUserType());
         if (user != null) {
             // Return user details if login is successful
@@ -43,15 +41,9 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User userRegistrationRequest) {
-        // Validate request data and perform registration
-        User user = new User();
-        user.setUsername(userRegistrationRequest.getUsername());
-        user.setPassword(userRegistrationRequest.getPassword());
-        user.setEmail(userRegistrationRequest.getEmail()); // Set email ID
-        user.setUserType(userRegistrationRequest.getUserType());
 
         // Save user to database
-        User savedUser = userService.registerUser(user);
+        User savedUser = userService.registerUser(userRegistrationRequest);
 
         return ResponseEntity.ok(savedUser);
     }

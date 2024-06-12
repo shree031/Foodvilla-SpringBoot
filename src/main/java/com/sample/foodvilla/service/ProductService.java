@@ -1,6 +1,7 @@
 package com.sample.foodvilla.service;
 
 import com.sample.foodvilla.entity.Product;
+import com.sample.foodvilla.entity.ProductDistributor;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +12,9 @@ public interface ProductService {
 
     Optional<Product> getProductById(Long id);
 
-    Product addProduct(Product product);
+    ProductDistributor addProduct(Product product, Long id);
 
     Product updateProduct(Product product);
+
+    List<Product> getProductsByDistributorId(Long id);
 }

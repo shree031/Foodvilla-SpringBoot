@@ -17,6 +17,7 @@ public class User {
     private String password;
     private String userType;
     private String email;
+    private String address;
 
     public User(Long userId) {
         this.setId(userId);
@@ -66,13 +67,11 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", userType='" + userType + '\'' +
-                '}';
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
