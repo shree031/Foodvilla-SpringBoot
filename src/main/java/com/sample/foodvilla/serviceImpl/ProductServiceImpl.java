@@ -93,7 +93,5 @@ public class ProductServiceImpl implements ProductService {
             throw new EntityNotFoundException("Product not found with id: " + productId);
         }
     }
-
-
 }
 

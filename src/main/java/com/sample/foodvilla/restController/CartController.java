@@ -1,7 +1,7 @@
 package com.sample.foodvilla.restController;
 
 import com.sample.foodvilla.entity.CartItem;
-import com.sample.foodvilla.entity.domain.DomainCartItem;
+import com.sample.foodvilla.entity.dto.CartItemDto;
 import com.sample.foodvilla.service.CartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +22,7 @@ public class CartController {
     private CartItemService cartService;
 
     @PostMapping("/api/cart/add")
-    public ResponseEntity<String> addToCart(@RequestBody DomainCartItem cartItemRequest) {
+    public ResponseEntity<String> addToCart(@RequestBody CartItemDto cartItemRequest) {
         cartService.addToCart(cartItemRequest.getUserId(), cartItemRequest.getProductId(), cartItemRequest.getQuantity());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

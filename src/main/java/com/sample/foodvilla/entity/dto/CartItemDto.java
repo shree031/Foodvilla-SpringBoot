@@ -1,6 +1,6 @@
-package com.sample.foodvilla.entity.domain;
+package com.sample.foodvilla.entity.dto;
 
-public class DomainCartItem {
+public class CartItemDto {
     private Long userId;
     private Long productId;
     private int quantity;

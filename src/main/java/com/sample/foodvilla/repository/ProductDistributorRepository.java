@@ -11,4 +11,8 @@ public interface ProductDistributorRepository extends JpaRepository<ProductDistr
 
     @Transactional
     void deleteByProductId(Long productId);
+
+    boolean existsByProductIdAndUserId(Long productId, Long id);
+
+    void deleteByUserId(Long userId);
 }
