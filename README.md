@@ -54,4 +54,4 @@ To get a local copy of the project up and running, follow these steps:
 
 ## 🔗 Integration with Frontend
 
-This backend project is designed to work with the FoodVilla-Angular. Ensure that the frontend is configured to interact with the correct API endpoints provided by this backend.
+This backend project is designed to work with the FoodVilla-Angular which is available at [FoodVilla Backend Repository](https://github.com/shree031/foodvilla-angular).. Ensure that the frontend is configured to interact with the correct API endpoints provided by this backend.
