@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e65b9750-d3ba-418d-a356-8c2add637659" width="200">
+  <img src="https://github.com/user-attachments/assets/399f0300-77d8-40e3-8309-aa87730b26f7" width="200">
+  <img src="https://github.com/user-attachments/assets/57c727e7-4179-4e43-b122-6832e6ac6e5b" width="200">
+  <img src="https://github.com/user-attachments/assets/d4534406-8695-4573-9355-ad30d87c377b" width="200">
+</p>
+
 # FoodVilla Backend
 
 Welcome to the FoodVilla backend project! This repository contains the code for the backend part of the FoodVilla application, which powers the frontend features for browsing recipes and ordering ingredients.
